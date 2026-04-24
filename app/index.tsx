@@ -8,11 +8,11 @@ import {
 
 export default function Home() {
   useEffect(() => {
-    OneSignal.initialize("40c554c5-ac6d-41d8-b223-03ef453fa1b8");
+    OneSignal.initialize("app_id");
 
     OneSignal.Notifications.requestPermission(true);
 
-    OneSignal.login("09578483406");
+    OneSignal.login("meu_exeternal_id");
     OneSignal.Notifications.addEventListener(
       "foregroundWillDisplay",
       (event: NotificationWillDisplayEvent) => {
