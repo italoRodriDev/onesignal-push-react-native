@@ -28,3 +28,29 @@ ANDROID_ADV_HOME: D:\Projetos\emuladores (Opcional)
 # 2 - Instalar dependencias
 
 npm install react-native-onesignal
+
+# 3 - Configurar Onesignal
+
+useEffect(() => {
+OneSignal.initialize("40c554c5-ac6d-41d8-b223-03ef453fa1b8");
+
+    OneSignal.Notifications.requestPermission(true);
+
+    OneSignal.login("09578483406");
+    OneSignal.Notifications.addEventListener(
+      "foregroundWillDisplay",
+      (event: NotificationWillDisplayEvent) => {
+        console.log("Notificação recebida", event);
+
+        event.getNotification().display();
+      },
+    );
+
+    OneSignal.Notifications.addEventListener(
+      "click",
+      (event: NotificationClickEvent) => {
+        console.log("Notificação aberta:", event);
+      },
+    );
+
+});
